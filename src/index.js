@@ -37,14 +37,19 @@
         }
       }
 
+      /**
+       * 
+       * @function valid_email
+       * @description return valid email address
+       * @param {*} event 
+       */
       function valid_email(event){
         let pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         if(pattern.test(String(this.value).toLowerCase())){
-          console.log('true');
         }
         else{
-          var elements = document.getElementsByTagName("INPUT");
-          for (var i = 0; i < elements.length; i++) {
+          let elements = document.getElementsByTagName("INPUT");
+          for (let i = 0; i < elements.length; i++) {
             elements[i].oninvalid = function(e) {
             e.target.setCustomValidity("");
             if (!e.target.validity.valid) {
@@ -59,6 +64,29 @@
 
 
         }
+      }
+      function valid_boolean(event){
+        const data = ["1", "0", "true", "false", 1, 0];
+        if(data.includes(this.value)){
+          console.log('true');
+        }
+        else{
+          console.log('false');
+          let elements = document.getElementsByTagName('input');
+          for (var i = 0; i < elements.length; i++) {
+            elements[i].oninvalid = function(e) {
+            e.target.setCustomValidity("");
+            if (!e.target.validity.valid) {
+            e.target.setCustomValidity("You need to enter valid email address");
+            }
+        };
+          elements[i].oninput = function(e) {
+            e.target.setCustomValidity("");
+          };
+        }
+
+        }
+
       }
 
   
@@ -108,6 +136,14 @@
                     element.addEventListener('keyup', valid_email);
                     element.setAttribute('type', 'email');
                   }
+                  break;
+                case "boolean":
+                  if(tag == "input"){
+                    element.addEventListener('blur', valid_boolean);
+                    element.addEventListener('keyup', valid_boolean);
+                    //element.setAttribute('type', 'text');
+                  }
+
 
               }
         }
