@@ -30,5 +30,6 @@ download the js file in our dist folder
 ```
 
 ## Use multiple data type
-
+``` html
 <input filter="integer|alpha">
+```
