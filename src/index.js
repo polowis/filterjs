@@ -1,8 +1,8 @@
 /**
  *
- * @Name 
- * @Version : 
- * @Programmer :
+ * @Name FilterJS
+ * @Version : 1.1.0
+ * @Programmer : Polowis
  * @Date : 
  * @Released under 
  * @Repository :
